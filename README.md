@@ -1,3 +1,52 @@
+#○create-react-app
+・rtd0131 がプロジェクト名
+・「npx create-react-app rtd0131」を実行
+→「npm start」で React のアイコンの画面が表示された
+○Linter
+・「npx eslint —init」を実行し linter として ESlint をインストール
+→ 以下の通り質問に回答した
+How would you like to use ESLint?
+: To check syntax, find problems, and enforce code style
+What type of modules does your project use?
+:JavaScript modules(import/export)
+Which framework does your project use?
+:React
+Does your project use TypeScript?
+:No
+Where does your code run?
+:Browser
+How would you like to define a style for your project?
+:Use a popular style guide
+:Airbnb
+What format do you want your config file to be in?
+:JSON
+Would you like to install them now with npm?
+:Yes
+・「npx eslint」を実行
+・「./node_modules/.bin/eslint src/App.js」を実行
+・「package.json」内の eslintConfig 内の記載を削除
+・「eslintrc.json」内の「rules」に”react/jsx-filename-extension”:[“error”,{“extensions”:[“.js”,”jsx”]}]を記載
+・「./node_modules/.bin/eslint —fix src/App.test.js」を実行
+→'React' must be in scope when using JSX とエラー
+・「.eslintrc.js」の「rules」に以下を記載
+→”react/react-in-jsx-scope”:”off”
+・再度「./node_modules/.bin/eslint —fix src/App.test.js」を実行
+→ エラーはでなかった
+・「package.json」の scripts に ESLint の実行を追加
+→「”lint”:”eslint —ext .jsx,.js src/“」
+・○Formatter
+・「npm i -D prettier」を実行
+・「echo {}> .prettierrc.json」で Prettier の設定ファイル.prettierrc.json（空）を用意
+・「touch .prettierignore」で Prettier の除外ディレクトリやファイルを指定するように,.prettierignore も追加します。
+・ESLint を入れている関係で, ESLint と Prettier で競合するルールがあるので, ESLint 側に設定を追加します。
+・「npm install —save-dev eslint-config-prettier」で、eslint-config-prettier は, ESLint と Prettier で競合するルールを, ESLint 上でオフにするために使うものです。
+・.eslintrc.json 内の extends 末尾に prettier と"prettier/react"を追加。
+・ESLint の各種ルール（airbnb とかの）を,prettier 系で上書きして競合ルールをオフにするため, 末尾にいれる必要がある感じです。（後に書かれたもので手前の設定を上書きます）
+・プロジェクト下に「.vscode」を作成、中身は「setting.json」（VSCode の設定を記述するファイル）
+・VSCode の設定：設定からワークスペースの設定をいじると自動的に.vscode 内の setting.json に設定が記載される
+
+#
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
