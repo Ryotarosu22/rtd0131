@@ -1,1 +1,6 @@
-{}
+{
+  "cSpell.blockCheckingWhenAverageChunkSizeGreaterThan": 100,
+  "indentRainbow.updateDelay": 90,
+  "Activation On Language": ["*"],
+  "gitlens.views.defaultItemLimit": 11
+}
