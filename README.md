@@ -12,60 +12,60 @@
 ### ○React をインストール
 
 - rtd0131 がプロジェクト名
-- 「npx create-react-app rtd0131」を実行  
+- 「npx create-react-app rtd0131」を実行
   →「npm start」で React アイコン表示
 
 ### ○Linter の設定
 
-- 「npx eslint —init」を実行 linter として ESlint をインストール  
+- 「npx eslint —init」を実行 linter として ESlint をインストール
   → 以下の通り質問に回答した
 
-1. How would you like to use ESLint?  
+1. How would you like to use ESLint?
    : To check syntax, find problems, and enforce code style
-2. What type of modules does your project use?  
+2. What type of modules does your project use?
    :JavaScript modules(import/export)
-3. Which framework does your project use?  
+3. Which framework does your project use?
    :React
-4. Does your project use TypeScript?  
+4. Does your project use TypeScript?
    :No
 5. Where does your code run?
    :Browser
-6. How would you like to define a style for your project?  
-   :Use a popular style guide  
+6. How would you like to define a style for your project?
+   :Use a popular style guide
    :Airbnb
-7. What format do you want your config file to be in?  
+7. What format do you want your config file to be in?
    :JSON
-8. Would you like to install them now with npm?  
+8. Would you like to install them now with npm?
    :Yes
 
 - 「npx eslint」を実行
 - 「./node_modules/.bin/eslint src/App.js」を実行
-- 以下はエラー内容  
-  :6:5 error 'React' must be in scope when using JSX react/react-in-jsx-scope  
-  6:5 error JSX not allowed in files with extension '.js' react/jsx-filename-extension  
-  7:7 error 'React' must be in scope when using JSX react/react-in-jsx-scope  
-  8:9 error 'React' must be in scope when using JSX react/react-in-jsx-scope  
-  9:9 error 'React' must be in scope when using JSX react/react-in-jsx-scope  
-  10:16 error `code` must be placed on a new line react/jsx-one-expression-per-line  
-  10:16 error 'React' must be in scope when using JSX react/react-in-jsx-scope  
-  10:39 error `and save to reload. ` must be placed on a new line react/jsx-one-expression-per-line  
-  12:9 error 'React' must be in scope when using JSX react/react-in-jsx-scope  
+- 以下はエラー内容
+  :6:5 error 'React' must be in scope when using JSX react/react-in-jsx-scope
+  6:5 error JSX not allowed in files with extension '.js' react/jsx-filename-extension
+  7:7 error 'React' must be in scope when using JSX react/react-in-jsx-scope
+  8:9 error 'React' must be in scope when using JSX react/react-in-jsx-scope
+  9:9 error 'React' must be in scope when using JSX react/react-in-jsx-scope
+  10:16 error `code` must be placed on a new line react/jsx-one-expression-per-line
+  10:16 error 'React' must be in scope when using JSX react/react-in-jsx-scope
+  10:39 error `and save to reload. ` must be placed on a new line react/jsx-one-expression-per-line
+  12:9 error 'React' must be in scope when using JSX react/react-in-jsx-scope
   ✖ 9 problems (9 errors, 0 warnings)
   2 errors and 0 warnings potentially fixable with the `--fix` option.
 - エラー解決のために「package.json」内の eslintConfig 内の記載を削除
 - 「eslintrc.json」内の「rules」に”react/jsx-filename-extension”:[“error”,{“extensions”:[“.js”,”jsx”]}]を記載
-- 「./node_modules/.bin/eslint —fix src/App.test.js」を実行  
+- 「./node_modules/.bin/eslint —fix src/App.test.js」を実行
   →'React' must be in scope when using JSX とエラー
-- 「.eslintrc.js」の「rules」に以下を記載  
+- 「.eslintrc.js」の「rules」に以下を記載
   →”react/react-in-jsx-scope”:”off”
-- 再度「./node_modules/.bin/eslint —fix src/App.test.js」を実行  
+- 再度「./node_modules/.bin/eslint —fix src/App.test.js」を実行
   → エラーはでなかった
-- 「package.json」の scripts に ESLint の実行を追加  
+- 「package.json」の scripts に ESLint の実行を追加
   →「”lint”:”eslint —ext .jsx,.js src/“」
 
 ### ○Formatter の設定
 
-- 「npm install —save-dev —save-exact prettier」を実行  
+- 「npm install —save-dev —save-exact prettier」を実行
   → エラーが出てインストールできていない(package.json にも記載されていない)
 - package.json 内の「,」のつけ忘れがあった
 - 「npm i -D prettier」を実行
@@ -79,6 +79,12 @@
 - ESLint の各種ルール（airbnb  とかの）を, prettier  系で上書きして競合ルールをオフにするため, 末尾にいれる必要がある感じです。（後に書かれたもので手前の設定を上書きます）
 - プロジェクト下に「.vscode」を作成、中身は「setting.json」（VSCode の設定を記述するファイル）
 - VSCode の設定：設定からワークスペースの設定をいじると自動的に.vscode 内の setting.json に設定が記載される
+
+### VSCode で Prettier を設定する
+
+- 参考 URL：https://www.digitalocean.com/community/tutorials/how-to-format-code-with-prettier-in-visual-studio-code-ja
+
+* 上記 URL のステップ 2 が参考になる
 
 # Getting Started with Create React App
 
