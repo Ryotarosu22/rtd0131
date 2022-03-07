@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Home } from "../Home";
 import { Page1 } from "../Page1";
 import { Page404 } from "../Page404";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 export const Router = () => {
   return (
