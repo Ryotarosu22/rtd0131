@@ -1,6 +1,7 @@
 import "./App.css";
 import { Router } from "./router/Router";
 import { BrowserRouter } from "react-router-dom";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 //import { useState } from "react";
 //import { InputTodo } from "./components/InputTodos";
 //import { IncompleteTodos } from "./components/IncompleteTodos";
@@ -9,7 +10,9 @@ import { BrowserRouter } from "react-router-dom";
 export default function App() {
   return (
     <BrowserRouter>
-      <Router />
+      <DragDropContext>
+        <Router />
+      </DragDropContext>
     </BrowserRouter>
   );
 }
