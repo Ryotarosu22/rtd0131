@@ -22,7 +22,7 @@ export const InputTodo = (props) => {
       <h2>ここで入力</h2>
       <input
         //薄灰色で何を入力すべきかを誘導
-        placeHolder="TODOを入力"
+        placeholder="TODOを入力"
         value={inputTodo}
         onChange={onChangeInputTodo}
       />
