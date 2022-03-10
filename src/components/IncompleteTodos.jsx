@@ -1,17 +1,19 @@
+import styled from "styled-components";
 //未完了コンポーネント
+
+const div = styled.div({
+  backgroundColor: "yellow",
+  color: "black",
+  marginTop: "20px",
+  marginBottom: "20px",
+  padding: "0px 20px",
+});
+
 export const IncompleteTodos = (props) => {
   ////もらってきたpropsを各値に代入
   const { incompleteTodos, onClickComplete, onClickDelete } = props;
   return (
-    <div
-      style={{
-        backgroundColor: "yellow",
-        color: "black",
-        marginTop: "20px",
-        marginBottom: "20px",
-        padding: "0px 20px",
-      }}
-    >
+    <div>
       <h2>未完了のTODO</h2>
       {/* 順不同リスト*/}
       <ul>
