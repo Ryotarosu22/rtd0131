@@ -21,7 +21,7 @@ export const IncompleteTodos = (props) => {
             /*return内をincompleteTodosで返す*/
           }
           return (
-            <div key={todo}>
+            <div index={todo}>
               <li>{todo}</li>
               <button onClick={() => onClickComplete(index)}>完了</button>
 
