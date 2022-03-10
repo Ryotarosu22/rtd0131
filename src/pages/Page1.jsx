@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./App.css";
-import { InputTodo } from "./components/InputTodos";
-import { IncompleteTodos } from "./components/IncompleteTodos";
-import { CompleteTodos } from "./components/CompleteTodos";
+import "../App.css";
+import { InputTodo } from "../components/InputTodos";
+import { IncompleteTodos } from "../components/IncompleteTodos";
+import { CompleteTodos } from "../components/CompleteTodos";
 import { useState } from "react";
 import styled from "styled-components";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+//import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import toast, { Toaster } from "react-hot-toast";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -80,7 +80,7 @@ export function Page1() {
         <Title>ToDoList App</Title>
       </Wrapper>
       <h1>TODOを管理しよう</h1>
-      <Link to="/">Home</Link>
+      <Link to="/">Homeに戻る</Link>
       <DatePicker>SimpleDatePicker={SimpleDatePicker}</DatePicker>
       <InputTodo
         inputTodo={inputTodo}
