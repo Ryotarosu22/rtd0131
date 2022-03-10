@@ -29,7 +29,7 @@ export const InputTodo = (props) => {
       />
       <button onClick={onClickAdd}>追加</button>
 
-      <button onClick={notify}>気合だ！</button>
+      <button onClick={notify}>気合だ</button>
       <Toaster />
     </div>
   );
