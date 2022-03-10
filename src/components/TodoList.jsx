@@ -5,7 +5,7 @@ const TodoList = ({ todos, del }) => {
       <ul>
         {todos.map((todo) => {
           return (
-            <li key={todo.id}>
+            <li index={todo.id}>
               {todo.text}
               <button onClick={() => del(todo.id)}>削除</button>
               <button onClick={() => comp(todo.id)}>完了</button>
