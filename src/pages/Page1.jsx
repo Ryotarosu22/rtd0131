@@ -10,6 +10,8 @@ import styled from "styled-components";
 import toast, { Toaster } from "react-hot-toast";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { memo, useCallback, useMemo } from "react";
+import axios from "axios";
 
 const Title = styled.h1({
   fontSize: "2em",
@@ -21,23 +23,28 @@ const Wrapper = styled.section({
   background: "gray",
 });
 
-const SimpleDatePicker = () => {
+const SimpleDatePicker = memo(() => {
+  console.log("SimpleDatePicker");
+  //alert("SimpleDatePicker");
   const initialDate = new Date();
   const [startDate, setStartDate] = useState(initialDate);
   const handleChange = (date) => {
     setStartDate(date);
   };
   return <DatePicker selected={startDate} onChange={handleChange} />;
-};
+});
 
-export function Page1() {
+export const Page1 = memo(() => {
+  console.log("Page1");
+  //alert("Page1");
   const [inputTodo, setInputTodo] = useState("");
   const [incompleteTodos, setIncompleteTodos] = useState([]);
   const [completeTodos, setCompleteTodos] = useState([]);
-  const onChangeInputTodo = (e) => {
+
+  const onChangeInputTodo = useCallback((e) => {
     setInputTodo(e.target.value);
-  };
-  const onClickAdd = () => {
+  }, []);
+  const onClickAdd = useCallback(() => {
     if (inputTodo === "") return;
     const newTodos = [...incompleteTodos, inputTodo];
     setIncompleteTodos(newTodos);
@@ -45,35 +52,45 @@ export function Page1() {
     toast.success("追加しました！", {
       duration: 5000,
     });
-  };
-  const onClickDelete = (i) => {
-    const newTodos = [...incompleteTodos];
-    newTodos.splice(i, 1);
-    setIncompleteTodos(newTodos);
-    toast.success("削除しました！", {
-      duration: 5000,
-    });
-  };
-  const onClickComplete = (i) => {
-    const newIncompleteTodos = [...incompleteTodos];
-    const newCompleteTodos = [...completeTodos, incompleteTodos[i]];
-    newIncompleteTodos.splice(i, 1);
-    setCompleteTodos(newCompleteTodos);
-    setIncompleteTodos(newIncompleteTodos);
-    toast.success("完了ゾーンに移動しました！", {
-      duration: 5000,
-    });
-  };
-  const onClickReturn = (i) => {
-    const newIncompleteTodos = [...incompleteTodos, completeTodos[i]];
-    const newCompleteTodos = [...completeTodos];
-    newCompleteTodos.splice(i, 1);
-    setIncompleteTodos(newIncompleteTodos);
-    setCompleteTodos(newCompleteTodos);
-    toast.success("未完了ゾーンに移動しました！", {
-      duration: 5000,
-    });
-  };
+  }, [inputTodo]);
+  const onClickDelete = useCallback(
+    (i) => {
+      const newTodos = [...incompleteTodos];
+      newTodos.splice(i, 1);
+      setIncompleteTodos(newTodos);
+      toast.success("削除しました！", {
+        duration: 5000,
+      });
+    },
+    [incompleteTodos]
+  );
+  const onClickComplete = useCallback(
+    (i) => {
+      const newIncompleteTodos = [...incompleteTodos];
+      const newCompleteTodos = [...completeTodos, incompleteTodos[i]];
+      newIncompleteTodos.splice(i, 1);
+      setCompleteTodos(newCompleteTodos);
+      setIncompleteTodos(newIncompleteTodos);
+      toast.success("完了ゾーンに移動しました！", {
+        duration: 5000,
+      });
+    },
+    [incompleteTodos, completeTodos]
+  );
+
+  const onClickReturn = useCallback(
+    (i) => {
+      const newIncompleteTodos = [...incompleteTodos, completeTodos[i]];
+      const newCompleteTodos = [...completeTodos];
+      newCompleteTodos.splice(i, 1);
+      setIncompleteTodos(newIncompleteTodos);
+      setCompleteTodos(newCompleteTodos);
+      toast.success("未完了ゾーンに移動しました！", {
+        duration: 5000,
+      });
+    },
+    [incompleteTodos, completeTodos]
+  );
   return (
     <div>
       <Wrapper>
@@ -81,7 +98,7 @@ export function Page1() {
       </Wrapper>
       <h1>TODOを管理しよう</h1>
       <Link to="/">Homeに戻る</Link>
-      <DatePicker>SimpleDatePicker={SimpleDatePicker}</DatePicker>
+      <DatePicker SimpleDatePicker={SimpleDatePicker} />
       <InputTodo
         inputTodo={inputTodo}
         onChangeInputTodo={onChangeInputTodo}
@@ -100,4 +117,4 @@ export function Page1() {
       />
     </div>
   );
-}
+});

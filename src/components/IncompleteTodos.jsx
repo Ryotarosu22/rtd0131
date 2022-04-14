@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { memo } from "react";
+import axios from "axios";
 //未完了コンポーネント
 
 const div = styled.div({
@@ -9,15 +11,32 @@ const div = styled.div({
   padding: "0px 20px",
 });
 
-export const IncompleteTodos = (props) => {
+/*
+fetch("https://jsonplaceholder.typicode.com/todos/1")
+  .then((response) => response.json())
+  .then((json) => console.log(json));*/
+
+const url = "https://jsonplaceholder.typicode.com/todos/1";
+const fetchData = async () => {
+  const result = await axios.get(url);
+  alert(`WebAPIから取得したTODOは${result.data.title}です。`);
+};
+fetchData();
+
+export const IncompleteTodos = memo((props) => {
+  console.log("IncompleteTodos");
+  //alert("IncompleteTodos");
   ////もらってきたpropsを各値に代入
   const { incompleteTodos, onClickComplete, onClickDelete } = props;
+  console.log(incompleteTodos);
+
   return (
     <div>
       <h2>未完了のTODO</h2>
       {/* 順不同リスト*/}
       <ul>
         {/*incompleteTodos配列にmapでtodoを添字indexで入れ直して*/}
+
         {incompleteTodos.map((todo, index) => {
           {
             /*return内をincompleteTodosで返す*/
@@ -34,4 +53,4 @@ export const IncompleteTodos = (props) => {
       </ul>
     </div>
   );
-};
+});

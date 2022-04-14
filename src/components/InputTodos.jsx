@@ -1,5 +1,6 @@
 import toast, { Toaster } from "react-hot-toast";
 import styled from "styled-components";
+import { memo } from "react";
 
 const notify = () =>
   toast.success("ToDoを熟していきましょう！", {
@@ -15,7 +16,9 @@ const div = styled.div({
 });
 
 //入力コンポーネント
-export const InputTodo = (props) => {
+export const InputTodo = memo((props) => {
+  console.log("InputTodo");
+  //alert("InputTodo");
   //もらってきたpropsを各値に代入
   const { inputTodo, onChangeInputTodo, onClickAdd } = props;
   return (
@@ -33,4 +36,4 @@ export const InputTodo = (props) => {
       <Toaster />
     </div>
   );
-};
+});

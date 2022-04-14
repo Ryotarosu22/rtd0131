@@ -1,5 +1,9 @@
-import { useState } from "react";
-const TodoForm = ({ add }) => {
+import { useCallback, useState } from "react";
+import { memo } from "react";
+
+const TodoForm = memo(({ add }) => {
+  console.log("TodoForm");
+  //alert("TodoForm");
   const [newTodo, setNewTodo] = useState("");
   const handleChange = (event) => {
     setNewTodo(event.target.value);
@@ -21,6 +25,6 @@ const TodoForm = ({ add }) => {
       <button onClick={addTodo}>追加</button>
     </>
   );
-};
+});
 
 export default TodoForm;

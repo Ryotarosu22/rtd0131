@@ -1,10 +1,10 @@
 import "./App.css";
-import { Router } from "./router/Router";
+import { Router } from "../src/router/Router";
 import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
-import { InputTodo } from "./components/InputTodos";
-import { IncompleteTodos } from "./components/IncompleteTodos";
-import { CompleteTodos } from "./components/CompleteTodos";
+import { InputTodo } from "../src/components/InputTodos";
+import { IncompleteTodos } from "../src/components/IncompleteTodos";
+import { CompleteTodos } from "../src/components/CompleteTodos";
 
 export default function App() {
   //inputTodo:stateの現在の値(状態変数)、setInputTodo:stateの現在の値を更新するための関数

@@ -8,6 +8,8 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 //import { CompleteTodos } from "./components/CompleteTodos";
 
 export default function App() {
+  console.log("App");
+  //alert("App");
   return (
     <BrowserRouter>
       <DragDropContext>
