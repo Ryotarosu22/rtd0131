@@ -16,19 +16,12 @@ fetch("https://jsonplaceholder.typicode.com/todos/1")
   .then((response) => response.json())
   .then((json) => console.log(json));*/
 
-const url = "https://jsonplaceholder.typicode.com/todos/1";
-const fetchData = async () => {
-  const result = await axios.get(url);
-  alert(`WebAPIから取得したTODOは${result.data.title}です。`);
-};
-fetchData();
-
 export const IncompleteTodos = memo((props) => {
   console.log("IncompleteTodos");
   //alert("IncompleteTodos");
   ////もらってきたpropsを各値に代入
   const { incompleteTodos, onClickComplete, onClickDelete } = props;
-  console.log(incompleteTodos);
+  console.log(`配列の中身は${incompleteTodos[0]}です。`);
 
   return (
     <div>

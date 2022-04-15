@@ -4,7 +4,7 @@ import "../App.css";
 import { InputTodo } from "../components/InputTodos";
 import { IncompleteTodos } from "../components/IncompleteTodos";
 import { CompleteTodos } from "../components/CompleteTodos";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 //import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import toast, { Toaster } from "react-hot-toast";
@@ -34,11 +34,21 @@ const SimpleDatePicker = memo(() => {
   return <DatePicker selected={startDate} onChange={handleChange} />;
 });
 
+let result = {};
+const url = "https://jsonplaceholder.typicode.com/todos/1";
+const fetchData = async () => {
+  result = await (await axios.get(url)).data.title;
+  alert(`WebAPIから取得したTODOは${result}です。`);
+  return (result = await (await axios.get(url)).data.title);
+};
+fetchData();
+console.log(result);
+
 export const Page1 = memo(() => {
   console.log("Page1");
   //alert("Page1");
   const [inputTodo, setInputTodo] = useState("");
-  const [incompleteTodos, setIncompleteTodos] = useState([]);
+  const [incompleteTodos, setIncompleteTodos] = useState([result]);
   const [completeTodos, setCompleteTodos] = useState([]);
 
   const onChangeInputTodo = useCallback((e) => {
