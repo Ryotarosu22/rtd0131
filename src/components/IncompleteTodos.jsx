@@ -36,7 +36,7 @@ export const IncompleteTodos = memo((props) => {
           }
           return (
             <div>
-              <li key={todo.toString()}>{todo}</li>
+              <li key={todo.id}>{todo}</li>
               <button onClick={() => onClickComplete(index)}>完了</button>
 
               <button onClick={() => onClickDelete(index)}>削除</button>

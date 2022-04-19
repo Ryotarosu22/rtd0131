@@ -24,7 +24,7 @@ const Wrapper = styled.section({
 let result = {};
 const url = "https://jsonplaceholder.typicode.com/todos/1";
 const fetchData = async () => {
-  result = await (await axios.get(url)).data.title;
+  result = (await axios.get(url)).data.title;
   alert(`WebAPIから取得したTODOは${result}です。`);
   return (result = await axios.get(url).data.title);
 };

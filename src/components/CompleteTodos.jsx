@@ -20,7 +20,7 @@ export const CompleteTodos = memo((props) => {
       <ul>
         {completeTodos.map((todo, index) => (
           <div>
-            <li key={todo.toString()}>{todo}</li>
+            <li key={todo.id}>{todo}</li>
             <button onClick={() => onClickReturn(index)}>戻す</button>
           </div>
         ))}
