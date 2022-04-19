@@ -19,8 +19,8 @@ export const CompleteTodos = memo((props) => {
       <h2>完了のTODO</h2>
       <ul>
         {completeTodos.map((todo, index) => (
-          <div index={todo}>
-            <li>{todo}</li>
+          <div>
+            <li key={todo.toString()}>{todo}</li>
             <button onClick={() => onClickReturn(index)}>戻す</button>
           </div>
         ))}
@@ -28,3 +28,5 @@ export const CompleteTodos = memo((props) => {
     </div>
   );
 });
+
+export default CompleteTodos;

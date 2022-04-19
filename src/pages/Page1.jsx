@@ -1,17 +1,15 @@
-import React from "react";
+import React, { useState, memo, useCallback } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
-import { InputTodo } from "../components/InputTodos";
-import { IncompleteTodos } from "../components/IncompleteTodos";
-import { CompleteTodos } from "../components/CompleteTodos";
-import { useState, useEffect } from "react";
 import styled from "styled-components";
-//import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import toast, { Toaster } from "react-hot-toast";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { memo, useCallback, useMemo } from "react";
+// import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import toast from "react-hot-toast";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import { CompleteTodos } from "../components/CompleteTodos";
+import { IncompleteTodos } from "../components/IncompleteTodos";
+import { InputTodo } from "../components/InputTodos";
 
 const Title = styled.h1({
   fontSize: "2em",
@@ -23,30 +21,19 @@ const Wrapper = styled.section({
   background: "gray",
 });
 
-const SimpleDatePicker = memo(() => {
-  console.log("SimpleDatePicker");
-  //alert("SimpleDatePicker");
-  const initialDate = new Date();
-  const [startDate, setStartDate] = useState(initialDate);
-  const handleChange = (date) => {
-    setStartDate(date);
-  };
-  return <DatePicker selected={startDate} onChange={handleChange} />;
-});
-
 let result = {};
 const url = "https://jsonplaceholder.typicode.com/todos/1";
 const fetchData = async () => {
   result = await (await axios.get(url)).data.title;
   alert(`WebAPIから取得したTODOは${result}です。`);
-  return (result = await (await axios.get(url)).data.title);
+  return (result = await axios.get(url).data.title);
 };
 fetchData();
 console.log(result);
 
 export const Page1 = memo(() => {
   console.log("Page1");
-  //alert("Page1");
+  // alert("Page1");
   const [inputTodo, setInputTodo] = useState("");
   const [incompleteTodos, setIncompleteTodos] = useState([result]);
   const [completeTodos, setCompleteTodos] = useState([]);
@@ -63,6 +50,7 @@ export const Page1 = memo(() => {
       duration: 5000,
     });
   }, [inputTodo]);
+
   const onClickDelete = useCallback(
     (i) => {
       const newTodos = [...incompleteTodos];
@@ -82,7 +70,7 @@ export const Page1 = memo(() => {
       setCompleteTodos(newCompleteTodos);
       setIncompleteTodos(newIncompleteTodos);
       toast.success("完了ゾーンに移動しました！", {
-        duration: 5000,
+        duration: 1000,
       });
     },
     [incompleteTodos, completeTodos]
@@ -108,7 +96,7 @@ export const Page1 = memo(() => {
       </Wrapper>
       <h1>TODOを管理しよう</h1>
       <Link to="/">Homeに戻る</Link>
-      <DatePicker SimpleDatePicker={SimpleDatePicker} />
+      {/* <DatePicker SimpleDatePicker={SimpleDatePicker} /> */}
       <InputTodo
         inputTodo={inputTodo}
         onChangeInputTodo={onChangeInputTodo}
@@ -128,3 +116,5 @@ export const Page1 = memo(() => {
     </div>
   );
 });
+
+export default Page1;
