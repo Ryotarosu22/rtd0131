@@ -1,5 +1,6 @@
 // import styled from "styled-components";
 import { memo } from "react";
+import React, { useEffect } from "react";
 // import axios from "axios";
 // 未完了コンポーネント
 
@@ -36,7 +37,7 @@ export const IncompleteTodos = memo((props) => {
           }
           return (
             <div>
-              <li key={todo.id}>{todo}</li>
+              <li>{todo}</li>
               <button onClick={() => onClickComplete(index)}>完了</button>
 
               <button onClick={() => onClickDelete(index)}>削除</button>
