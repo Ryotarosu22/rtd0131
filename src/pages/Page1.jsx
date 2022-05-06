@@ -21,7 +21,7 @@ const Wrapper = styled.section({
   background: "gray",
 });
 
-/* let result = {};
+let result = {};
 const url = "https://jsonplaceholder.typicode.com/todos/1";
 const fetchData = async () => {
   result = (await axios.get(url)).data.title;
@@ -30,30 +30,30 @@ const fetchData = async () => {
 };
 fetchData();
 console.log(result);
-*/
+
 export const Page1 = memo(() => {
-  let result = "「初期値のつもり！」";
-  useEffect(() => {
-    console.log("useEffectは動いています");
-    // let result = {};
+  // const result = {};
+  // useEffect(() => {
+  // console.log("useEffectは動いています");
+  /* let result = {};
     const url = "https://jsonplaceholder.typicode.com/todos/1";
     const fetchData = async () => {
       console.log(url);
       // console.log(result);
-      try {
-        result = await axios.get(url).data.title;
-        console.log(result);
-        // result = (await axios.get(url)).data.title;
-        alert(`WebAPIから取得したTODOは${result}です。`);
-        // return result;
-        // return (result = axios.get(url).data.title);
-        // return (result = await axios.get(url).data.title);
-      } catch {
-        console.log("");
-      }
-    };
-    fetchData(result);
-  }, []);
+      // try {
+      result = await axios.get(url).data.title;
+      console.log(result);
+      // result = (await axios.get(url)).data.title;
+      alert(`WebAPIから取得したTODOは${result}です。`);
+      // return result;
+      // return (result = axios.get(url).data.title);
+      // return (result = await axios.get(url).data.title);
+      // } catch {
+      console.log("あああ");
+      // }
+    }; */
+  // fetchData(result);
+  // }, []);
 
   console.log("Page1");
   // alert("Page1");
